@@ -1,3 +1,4 @@
+<img src="https://profile-counter.glitch.me/jiyuwu/count.svg" alt="ych :: Visitor's Count" />
 ### Hi there 👋
 
 Here are some quick things about me:
