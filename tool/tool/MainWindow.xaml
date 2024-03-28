@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tool"
         mc:Ignorable="d"
-        Title="工具箱" Height="450" Width="800">
+        Title="工具箱" Height="490" Width="900">
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="CustomTextBoxStyle">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350" />
+            <!-- 左侧部分 -->
+            <ColumnDefinition Width="200" />
+            <!-- 中间部分 -->
+            <ColumnDefinition Width="350" />
+            <!-- 右侧部分 -->
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0">
+            <TextBox x:Name="txt_input"></TextBox>
+        </Border>
+
+        <Border Grid.Column="1">
+            <Grid>
+                <StackPanel Width="190">
+                    <Button Height="40">111</Button>
+                    <Button>111</Button>
+                    <Button>111</Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="2">
+            <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="txt_output"  ></TextBox>
+        </Border>
     </Grid>
+
 </Window>
