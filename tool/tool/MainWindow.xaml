@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:tool"
+        xmlns:local="clr-namespace:tool" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="工具箱" Height="490" Width="900">
     <Window.Resources>
@@ -130,29 +130,73 @@
         
         <!-- 左侧内容 -->
         <Border Grid.Column="0"  Grid.Row="1">
-            <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="txt_input"></TextBox>
+            <TextBox Style="{StaticResource CustomTextBoxStyle}" Name="txt_input" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
         </Border>
 
         <!-- 中间内容（固定大小） -->
         <Border Grid.Column="1" Width="150" Grid.Row="1">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
                 <!-- 嵌套的Grid用于中间列的布局 -->
-                <!--<Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.Column="0">
+                    <Grid>
+                        <StackPanel>
+                            <WrapPanel  Margin="10" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="源:" Padding="10" Height="30" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBox Name="txt_s" Width="90" Height="30" />
+                            </WrapPanel>
+                            <WrapPanel  Margin="10" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="新:"  Padding="10"  Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="40"/>
+                                <TextBox Name="txt_n" Width="90" Height="30" />
+                            </WrapPanel>
+                            <WrapPanel  Margin="10" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Name="btn_change" Height="30"  Width="100">转换</Button>
+                            </WrapPanel>
+                        </StackPanel>
 
-                <!--<TextBlock Grid.Row="0" Text="中间顶部内容" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="1" Text="中间底部内容" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
-                <Label>原字符：</Label>
-                <TextBox Name="text" ></TextBox>
-                <Button>转换</Button>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="1">
+                    <Grid>
+                        <StackPanel>
+                            <WrapPanel>
+                                <TextBox Name="txt_key" Width="150" Height="30" />
+                            </WrapPanel>
+                            <WrapPanel  Margin="10" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBox Name="txt_up" Width="90" Height="30" />
+                                <Button Name="btn_up" Height="30"  Width="50"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="ContentCopy" Width="20" Height="20" />
+                                </Button>
+                            </WrapPanel>
+                            <WrapPanel  Margin="10" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBox Name="txt_low" Width="90" Height="30" />
+                                <Button Name="btn_low" Height="30"  Width="50"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="ContentCopy" Width="20" Height="20" />
+                                </Button>
+                            </WrapPanel>
+                            <WrapPanel  Margin="10" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBox Name="txt_up_low" Width="90" Height="30" />
+                                <Button Name="btn_up_low" Height="30"  Width="50"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="ContentCopy" Width="20" Height="20" />
+                                </Button>
+                            </WrapPanel>
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
             </Grid>
         </Border>
 
         <!-- 右侧内容 -->
         <Border Grid.Column="2" Grid.Row="1">
-            <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="txt_output"  ></TextBox>
+            <TextBox Style="{StaticResource CustomTextBoxStyle}" Name="txt_output" TextWrapping="Wrap" AcceptsReturn="True" ></TextBox>
         </Border>
         
     </Grid>
