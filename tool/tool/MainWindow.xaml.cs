@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.TextFormatting;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace tool
 {
@@ -20,21 +11,52 @@ namespace tool
     /// </summary>
     public partial class MainWindow : Window
     {
+        private System.Timers.Timer timer;
         public MainWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             cb_top.Click += Cb_top_Click;
             txt_input.SelectionChanged += Txt_input_SelectionChanged; ;
-            txt_key.TextChanged += Txt_key_TextChanged; 
+            txt_key.TextChanged += Txt_key_TextChanged;
             txt_input.Focus();
 
+            #region 大小写转换控制
             btn_low.Click += Btn_low_Click;
             btn_up.Click += Btn_up_Click;
             btn_up_low.Click += Btn_up_low_Click;
             btn_change.Click += Btn_change_Click;
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000; // 设置定时器间隔为1秒
+            timer.Elapsed += Timer_Elapsed; // 绑定定时器触发事件
+            cb_monitor.Click += Cb_monitor_Click;
+            #endregion
         }
-
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                string str = Clipboard.GetText();
+                if (str != txt_low.Text && str != txt_up.Text && str != txt_up_low.Text)
+                {
+                    txt_key.Text = str;
+                }
+            });
+        }
+        private void Cb_monitor_Click(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            if (checkBox.IsChecked == true)
+            {
+                // 复选框被选中时的逻辑
+                timer.Start();
+            }
+            else
+            {
+                // 复选框未被选中时的逻辑
+                timer.Stop();
+            }
+        }
         private void Txt_input_SelectionChanged(object sender, RoutedEventArgs e)
         {
             GetSelectedText();

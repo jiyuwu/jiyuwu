@@ -73,17 +73,31 @@
                     <Setter Property="Background" Value="#3D5CE3"/>
                     <Setter TargetName="PART_Popup" Property="IsOpen" Value="true"/>
                 </MultiTrigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="#5a5e66"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="Background" Value="#5a5e66"/>
-            <Setter Property="Foreground" Value="#5a5e66"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="0,0,0,0"/>
             <Setter Property="Template" Value="{StaticResource SubmenuHeaderTemplateKey}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     <Grid>
@@ -166,6 +180,9 @@
                 <Border Grid.Row="1">
                     <Grid>
                         <StackPanel>
+                            <WrapPanel>
+                                <CheckBox  Content="监控剪贴板" Name="cb_monitor" HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="10" ></CheckBox>
+                            </WrapPanel>
                             <WrapPanel>
                                 <TextBox Name="txt_key" Width="150" Height="30" />
                             </WrapPanel>
