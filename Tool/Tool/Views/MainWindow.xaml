@@ -123,7 +123,7 @@
                         </Style>
                     </Menu.ItemContainerStyle>
                     <MenuItem Header="文件" Template="{StaticResource SubmenuHeaderTemplateKey}">
-                        <MenuItem Header="New" />
+                        <MenuItem Header="笔记" Name="menu_article" />
                         <MenuItem Header="Open" />
                         <MenuItem Header="Save" />
                         <Separator />

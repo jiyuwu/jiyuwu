@@ -34,7 +34,18 @@ namespace Tool.Views
             timer.Elapsed += Timer_Elapsed; // 绑定定时器触发事件
             cb_monitor.Click += Cb_monitor_Click;
             #endregion
+            #region menu
+            menu_article.Click += Menu_article_Click;
+            #endregion
         }
+
+        private void Menu_article_Click(object sender, RoutedEventArgs e)
+        {
+            Article article = new Article();
+            article.Show();
+            article.Focus();
+        }
+
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             Dispatcher.Invoke(() =>
