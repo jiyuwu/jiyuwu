@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using IService;
+using Model;
 using Model.Common;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace repository.Service
 {
-    public class ArticleService
+    public class ArticleService: IArticleService
     {
         public string AddNew(Article Information)
         {

@@ -6,11 +6,11 @@ namespace IService
 {
     public interface IArticleService: IServiceSupport
     {
-        int AddNew(Article Information);
+        string AddNew(Article Information);
         List<Article> GetList(PageModel pageModel);
         int GetCount(PageModel pageModel);
-        Article GetInfoById(int Id);
-        int Update(Article Information);
-        int ChangeState(ChangeState changeState);
+        Article GetInfoById(string Id);
+        string Update(Article Information);
+        string ChangeState(ChangeState changeState);
     }
 }

@@ -1,4 +1,7 @@
-﻿using Prism.Commands;
+﻿using Business;
+using IService;
+using Microsoft.Extensions.DependencyInjection;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -13,6 +16,8 @@ namespace Tool.ViewModels
     {
         //public string Name { get; set; } = "YCH";
         private string name = "YCH";
+        private readonly IArticleService _service;
+        ArticleBll articleBll;
         public string Name
         {
             get { return name; }
@@ -23,6 +28,8 @@ namespace Tool.ViewModels
         }
         public ArticleViewModel()
         {
+            _service=App.ServiceProvider.GetService<IArticleService>();
+            articleBll = new ArticleBll(_service);
             Task.Run(async () => {
                 await Task.Delay(2000);
                 Name = "这是个测试";

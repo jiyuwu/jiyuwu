@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using repository.Config;
+using System.IO;
 
 namespace repository
 {
@@ -18,6 +19,19 @@ namespace repository
         // 构造函数：指定连接字符串
         public EFContext() : base("name=MyDbContext")
         {
+            EnsureDatabaseCreated();
+        }
+        private void EnsureDatabaseCreated()
+        {
+            string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mydatabase.db");
+
+            if (!File.Exists(dbFilePath))
+            {
+                Database.SetInitializer<EFContext>(null); // 禁用数据库初始化
+
+                // 创建一个空的数据库以及表结构
+                Database.Create();
+            }
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
