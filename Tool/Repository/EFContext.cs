@@ -28,10 +28,20 @@ namespace repository
             if (!File.Exists(dbFilePath))
             {
                 Database.SetInitializer<EFContext>(null); // 禁用数据库初始化
-
                 // 创建一个空的数据库以及表结构
                 Database.Create();
             }
+            #region 创建表
+            string strArticle = @"CREATE TABLE IF NOT EXISTS Article (
+                            Id TEXT PRIMARY KEY,
+                            Title TEXT NOT NULL,
+                            Content TEXT,
+                            Status INTEGER NOT NULL,
+                            CreateTime DATETIME NOT NULL,
+                            EditTime DATETIME NOT NULL
+                        )";
+            this.Database.ExecuteSqlCommand(strArticle);
+            #endregion
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -18,7 +18,7 @@ namespace repository.Config
             this.Property(a => a.Title).IsRequired().HasMaxLength(100);
             this.Property(a => a.Content).IsRequired();
             // 配置数据库表名
-            this.ToTable("Articles");
+            this.ToTable("Article");
         }
     }
 }

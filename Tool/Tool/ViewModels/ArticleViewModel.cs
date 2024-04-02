@@ -1,6 +1,7 @@
 ﻿using Business;
 using IService;
 using Microsoft.Extensions.DependencyInjection;
+using Model;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -17,6 +18,7 @@ namespace Tool.ViewModels
         //public string Name { get; set; } = "YCH";
         private string name = "YCH";
         private readonly IArticleService _service;
+        //ArticleBll articleBll=new ArticleBll();
         ArticleBll articleBll;
         public string Name
         {
@@ -42,6 +44,12 @@ namespace Tool.ViewModels
         private void ButtonClick(object obj)
         {
             this.Name = "哈哈哈哈！" + (string)obj;
+            Article article = new Article();
+            article.Title = "1111";
+            article.Content = "222";
+            article.Status = 1;
+            article.CreateTime = DateTime.Now;
+            articleBll.addArticle(article);
         }
     }
 }

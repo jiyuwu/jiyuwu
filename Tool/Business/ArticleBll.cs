@@ -1,5 +1,6 @@
 ﻿using IService;
 using Model;
+using repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,10 @@ namespace Business
 {
     public class ArticleBll
     {
+        //private readonly IArticleService _service = new ArticleService();
         private readonly IArticleService _service;
-        public ArticleBll(IArticleService serviceProvider) {
+        public ArticleBll(IArticleService serviceProvider)
+        {
             _service = serviceProvider;
         }
         public string addArticle(Article article)
