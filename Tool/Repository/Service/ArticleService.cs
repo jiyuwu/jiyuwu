@@ -14,6 +14,10 @@ namespace repository.Service
     public class ArticleService : IArticleService
     {
         SQLiteHelper helper = new SQLiteHelper();
+        public void NotExitCreateTable()
+        {
+
+        }
         public string AddNew(Article Information)
         {
             Information.CreateTime = DateTime.Now;

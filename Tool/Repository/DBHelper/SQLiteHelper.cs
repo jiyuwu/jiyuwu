@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using Model.Common;
+using Common;
 
 namespace Repository.DBHelper
 {
     public class SQLiteHelper
     {
         private static string connectionString = string.Empty;
+        private static string dbname = "mydatabase.db";
 
         public SQLiteHelper()
         {
-            string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mydatabase.db");
+            string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dbname);
             connectionString = string.Format("Data Source={0};Version={1}",
                 dbFilePath, 3);
         }
@@ -40,12 +42,73 @@ namespace Repository.DBHelper
         /// <param name="dbName">数据库文件名。为null或空串时不创建。</param>
         /// <param name="password">（可选）数据库密码，默认为空。</param>
         /// <exception cref="Exception"></exception>
-        public static void CreateDB(string dbName)
+        public static void CreateDB()
         {
-            if (!string.IsNullOrEmpty(dbName))
+            if (!string.IsNullOrEmpty(dbname))
             {
-                try { SQLiteConnection.CreateFile(dbName); }
-                catch (Exception) { throw; }
+                try
+                {
+                    // 设置数据库文件路径
+                    string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dbname);
+                    // 如果数据库文件不存在，则创建数据库文件
+                    if (!File.Exists(dbFilePath))
+                    {
+                        SQLiteConnection.CreateFile(dbFilePath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TxtHelper.WriteError(ex);
+                }
+            }
+        }
+
+        public static void CreateTable()
+        {
+            Dictionary<string, string> tables = new Dictionary<string, string>();
+            tables.Add("Article", @"Id TEXT PRIMARY KEY,
+                            Title TEXT NOT NULL,
+                            Content TEXT,
+                            Status INTEGER NOT NULL,
+                            CreateTime DATETIME NOT NULL,
+                            EditTime DATETIME NOT NULL");
+            CreateTable(tables,1);
+            CreateTable(tables,2);
+        }
+        public static void CreateTable(Dictionary<string, string> tables,int num)
+        {
+            try
+            {
+                if (tables == null || tables.Count == 0)
+                {
+                    throw new ArgumentException("The tables dictionary cannot be null or empty.");
+                }
+                // 使用 connectionString 连接数据库
+                using (SQLiteConnection connection = new SQLiteConnection(string.Format("Data Source={0};Version={1}",
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dbname), 3)))
+                {
+                    connection.Open();
+
+                    // 遍历字典中的每个表
+                    foreach (var table in tables)
+                    {
+                        // 构建创建表的 SQL 语句
+                        string createTableSql = $"CREATE TABLE IF NOT EXISTS {table.Key} ({table.Value})";
+
+                        // 使用 SQLiteCommand 执行创建表的 SQL 语句
+                        using (SQLiteCommand command = new SQLiteCommand(createTableSql, connection))
+                        {
+
+                            command.ExecuteNonQuery();
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if(num>1)
+                    TxtHelper.WriteError(ex);
             }
         }
 
@@ -232,7 +295,7 @@ namespace Repository.DBHelper
                             command.Parameters.Add(parameter);
                         }
 
-                       return  command.ExecuteNonQuery();
+                        return command.ExecuteNonQuery();
                     }
                 }
             }
@@ -308,7 +371,7 @@ namespace Repository.DBHelper
                             command.Parameters.Add(parameter);
                         }
 
-                      return  command.ExecuteNonQuery();
+                        return command.ExecuteNonQuery();
                     }
                 }
             }

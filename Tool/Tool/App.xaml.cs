@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Prism.Ioc;
 using Prism.Unity;
+using Repository.DBHelper;
 using System;
 using System.Data;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Tool
         public static IServiceProvider ServiceProvider { get; private set; }
         protected override Window CreateShell()
         {
+            SQLiteHelper.CreateDB();
+            SQLiteHelper.CreateTable();
             return new MainWindow();
         }
         protected override void RegisterTypes(IContainerRegistry registry)
