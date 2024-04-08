@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Threading;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using Tool.ViewModels.Area;
+using Tool.Views.Area;
 
 namespace Tool.Views
 {
@@ -12,9 +15,12 @@ namespace Tool.Views
     public partial class MainWindow : Window
     {
         private System.Timers.Timer timer;
-        public MainWindow()
+        private IRegionManager _regionManager;
+        public MainWindow(IRegionManager regionManager)
         {
             InitializeComponent();
+            _regionManager = regionManager;
+            //this.Unloaded += DialogView_Unloaded;
             #region 初始化位置
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             #endregion
@@ -41,9 +47,14 @@ namespace Tool.Views
 
         private void Menu_article_Click(object sender, RoutedEventArgs e)
         {
-            Article article = new Article();
-            article.Show();
-            article.Focus();
+            //Article article = new Article();
+            //article.Show();
+            //article.Focus();
+            AreaMain areaMain = new AreaMain();
+            //_regionManager.Regions.Remove("ContentRegion");
+            RegionManager.SetRegionManager(areaMain, _regionManager);
+            RegionManager.UpdateRegions();
+            areaMain.Show();
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)

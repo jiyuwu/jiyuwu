@@ -1,13 +1,9 @@
 ﻿using Business;
 using IService;
 using Microsoft.Extensions.DependencyInjection;
-using Model;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -44,7 +40,7 @@ namespace Tool.ViewModels
         private void ButtonClick(object obj)
         {
             this.Name = "哈哈哈哈！" + (string)obj;
-            Article article = new Article();
+            Model.Article article = new Model.Article();
             article.Title = "1111";
             article.Content = "222";
             article.Status = 1;

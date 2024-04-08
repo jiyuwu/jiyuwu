@@ -271,9 +271,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\ArticleViewModel.cs" />
-    <Compile Include="Views\Article.xaml.cs">
+    <Compile Include="ViewModels\Area\AreaMainViewModel.cs" />
+    <Compile Include="ViewModels\Area\AreaUserAViewModel.cs" />
+    <Compile Include="ViewModels\Area\AreaUserBViewModel.cs" />
+    <Compile Include="ViewModels\Article\ArticleEditViewModel.cs" />
+    <Compile Include="ViewModels\Article\ArticleListViewModel.cs" />
+    <Compile Include="ViewModels\Article\ArticleModule.cs" />
+    <Compile Include="ViewModels\Article\ArticleViewModel.cs" />
+    <Compile Include="Views\Area\AreaMain.xaml.cs">
+      <DependentUpon>AreaMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Area\AreaUserA.xaml.cs">
+      <DependentUpon>AreaUserA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Area\AreaUserB.xaml.cs">
+      <DependentUpon>AreaUserB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Article\Article.xaml.cs">
       <DependentUpon>Article.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Article\ArticleEdit.xaml.cs">
+      <DependentUpon>ArticleEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Article\ArticleList.xaml.cs">
+      <DependentUpon>ArticleList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -282,7 +303,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Article.xaml">
+    <Page Include="Views\Area\AreaMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Area\AreaUserA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Area\AreaUserB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Article\Article.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Article\ArticleEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Article\ArticleList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
