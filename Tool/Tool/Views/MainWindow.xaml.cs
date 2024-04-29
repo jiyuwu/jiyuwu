@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Tool.ViewModels.Area;
 using Tool.Views.Area;
+using Tool.Views.SqlTool;
 
 namespace Tool.Views
 {
@@ -42,7 +43,14 @@ namespace Tool.Views
             #endregion
             #region menu
             menu_article.Click += Menu_article_Click;
+            menu_mstool.Click += Menu_mstool_Click;
             #endregion
+        }
+
+        private void Menu_mstool_Click(object sender, RoutedEventArgs e)
+        {
+            MSTool mSTool = new MSTool();
+            mSTool.Show();
         }
 
         private void Menu_article_Click(object sender, RoutedEventArgs e)

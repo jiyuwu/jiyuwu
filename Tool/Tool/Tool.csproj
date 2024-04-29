@@ -278,6 +278,7 @@
     <Compile Include="ViewModels\Article\ArticleListViewModel.cs" />
     <Compile Include="ViewModels\Article\ArticleModule.cs" />
     <Compile Include="ViewModels\Article\ArticleViewModel.cs" />
+    <Compile Include="ViewModels\SqlTool\MSToolViewModel.cs" />
     <Compile Include="Views\Area\AreaMain.xaml.cs">
       <DependentUpon>AreaMain.xaml</DependentUpon>
     </Compile>
@@ -302,6 +303,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\SqlTool\MSTool.xaml.cs">
+      <DependentUpon>MSTool.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Area\AreaMain.xaml">
       <SubType>Designer</SubType>
@@ -330,6 +334,10 @@
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SqlTool\MSTool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

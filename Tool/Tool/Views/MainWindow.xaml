@@ -124,7 +124,7 @@
                     </Menu.ItemContainerStyle>
                     <MenuItem Header="文件" Template="{StaticResource SubmenuHeaderTemplateKey}">
                         <MenuItem Header="笔记" Name="menu_article" />
-                        <MenuItem Header="Open" />
+                        <MenuItem Header="Open" Name="menu_mstool" />
                         <MenuItem Header="Save" />
                         <Separator />
                         <MenuItem Header="Exit" />
