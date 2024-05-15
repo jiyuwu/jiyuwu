@@ -44,7 +44,17 @@ namespace Tool.Views
             #region menu
             menu_article.Click += Menu_article_Click;
             menu_mstool.Click += Menu_mstool_Click;
+            menu_area.Click += Menu_area_Click;
             #endregion
+        }
+
+        private void Menu_area_Click(object sender, RoutedEventArgs e)
+        {
+            AreaMain areaMain = new AreaMain();
+            //_regionManager.Regions.Remove("ContentRegion");
+            RegionManager.SetRegionManager(areaMain, _regionManager);
+            RegionManager.UpdateRegions();
+            areaMain.Show();
         }
 
         private void Menu_mstool_Click(object sender, RoutedEventArgs e)
@@ -55,14 +65,9 @@ namespace Tool.Views
 
         private void Menu_article_Click(object sender, RoutedEventArgs e)
         {
-            //Article article = new Article();
-            //article.Show();
-            //article.Focus();
-            AreaMain areaMain = new AreaMain();
-            //_regionManager.Regions.Remove("ContentRegion");
-            RegionManager.SetRegionManager(areaMain, _regionManager);
-            RegionManager.UpdateRegions();
-            areaMain.Show();
+            Article article = new Article();
+            article.Show();
+            article.Focus();
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)

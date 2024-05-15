@@ -122,14 +122,14 @@
                             <Setter Property="StaysOpenOnClick" Value="True"/>
                         </Style>
                     </Menu.ItemContainerStyle>
-                    <MenuItem Header="文件" Template="{StaticResource SubmenuHeaderTemplateKey}">
+                    <MenuItem Header="功能" Template="{StaticResource SubmenuHeaderTemplateKey}">
                         <MenuItem Header="笔记" Name="menu_article" />
-                        <MenuItem Header="Open" Name="menu_mstool" />
-                        <MenuItem Header="Save" />
+                        <MenuItem Header="MSTool" Name="menu_mstool" />
+                        <MenuItem Header="测试" Name="menu_area" />
                         <Separator />
                         <MenuItem Header="Exit" />
                     </MenuItem>
-                    <MenuItem Header="功能" Template="{StaticResource SubmenuHeaderTemplateKey}">
+                    <MenuItem Header="模块" Template="{StaticResource SubmenuHeaderTemplateKey}">
                         <MenuItem Header="Cut" />
                         <MenuItem Header="Copy" />
                         <MenuItem Header="Paste" />
