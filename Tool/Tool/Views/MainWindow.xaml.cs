@@ -1,5 +1,6 @@
 ﻿using Prism.Regions;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Timers;
 using System.Windows;
@@ -44,8 +45,16 @@ namespace Tool.Views
             #region menu
             menu_article.Click += Menu_article_Click;
             menu_mstool.Click += Menu_mstool_Click;
+            menu_cmd.Click += Menu_cmd_Click;
             menu_area.Click += Menu_area_Click;
             #endregion
+        }
+
+        private void Menu_cmd_Click(object sender, RoutedEventArgs e)
+        {
+            CMDTool.CMDTool cMDTool = new CMDTool.CMDTool();
+            cMDTool.Show();
+            cMDTool.Focus();
         }
 
         private void Menu_area_Click(object sender, RoutedEventArgs e)

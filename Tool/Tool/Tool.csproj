@@ -278,6 +278,7 @@
     <Compile Include="ViewModels\Article\ArticleListViewModel.cs" />
     <Compile Include="ViewModels\Article\ArticleModule.cs" />
     <Compile Include="ViewModels\Article\ArticleViewModel.cs" />
+    <Compile Include="ViewModels\CMDTool\CMDToolViewModel.cs" />
     <Compile Include="ViewModels\SqlTool\MSToolViewModel.cs" />
     <Compile Include="Views\Area\AreaMain.xaml.cs">
       <DependentUpon>AreaMain.xaml</DependentUpon>
@@ -296,6 +297,9 @@
     </Compile>
     <Compile Include="Views\Article\ArticleList.xaml.cs">
       <DependentUpon>ArticleList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CMDTool\CMDTool.xaml.cs">
+      <DependentUpon>CMDTool.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -328,6 +332,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Article\ArticleList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CMDTool\CMDTool.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -401,6 +409,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Costura64\SQLite.Interop.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

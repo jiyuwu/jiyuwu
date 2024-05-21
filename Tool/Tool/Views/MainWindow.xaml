@@ -125,6 +125,7 @@
                     <MenuItem Header="功能" Template="{StaticResource SubmenuHeaderTemplateKey}">
                         <MenuItem Header="笔记" Name="menu_article" />
                         <MenuItem Header="MSTool" Name="menu_mstool" />
+                        <MenuItem Header="命令行" Name="menu_cmd" />
                         <MenuItem Header="测试" Name="menu_area" />
                         <Separator />
                         <MenuItem Header="Exit" />

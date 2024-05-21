@@ -1,0 +1,36 @@
+﻿<Window x:Class="Tool.Views.CMDTool.CMDTool"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/" prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:local="clr-namespace:Tool.Views.CMDTool"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="命令行工具" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!-- 左侧列 -->
+            <ColumnDefinition Width="Auto" />
+            <!-- 中间列（固定大小） -->
+            <ColumnDefinition Width="*" />
+            <!-- 右侧列 -->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--菜单栏-->
+        <Border Grid.Column="0"  Grid.Row="0" Grid.ColumnSpan="3"  Margin="0 0 0 0">
+            <Grid>
+                <StackPanel Orientation="Horizontal" Width="800" >
+                    <TextBox x:Name="txt_path"  Width="600" Height="30"  Text="{Binding Path}"/>
+                    <Button x:Name="btn_open" Content="打开"  Command="{Binding ClickOpen}" CommandParameter="{Binding Path}" Margin="10,0,0,0" />
+                </StackPanel>
+                <CheckBox  Content="置顶" Name="cb_top" HorizontalAlignment="Right" Padding="5"   IsChecked="{Binding IsTopChecked}" 
+                Command="{Binding ToggleTop}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"  ></CheckBox>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
