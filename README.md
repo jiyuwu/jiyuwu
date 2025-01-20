@@ -4,7 +4,7 @@
 Here are some quick things about me:
 
 - 🔭 I’m the author of TemplateCore.
-- 📫 The best way to reach me is  join QQ groub(43190695).
+- 📫 The best way to reach me is  join QQ group(43190695).
 - ⚡ Coding is my passion.
 
 <!-- <p align="center"> 大家好，我是航哥！ </p>  
